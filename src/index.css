@@ -1,0 +1,29 @@
+@import "tailwindcss";
+@font-face {
+    font-family: font1;
+    src: url(rajdhani-700.woff2) format("woff2");
+}
+html{
+  scroll-behavior: smooth;
+}
+*{
+    font-family: font1;
+}
+body{
+  background-color: black;
+
+}
+html {
+  scroll-behavior: smooth;
+}
+              
+    @keyframes floatY {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-10px);
+      }
+    }
+ 
+          
