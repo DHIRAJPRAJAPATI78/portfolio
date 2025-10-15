@@ -1,48 +1,79 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import { useRef } from "react";
 const Abouttab = () => {
   const titleRef = useRef();
-  const borRef = useRef()
-  const secRef = useRef()
+  const borRef = useRef();
+  const secRef = useRef();
 
+  // useGSAP(() => {
+  //   const tl = gsap.timeline({
+  //     defaults: { ease: "power2.out" },
+  //   });
 
-useGSAP(() => {
+  //   tl.from(secRef.current.querySelectorAll("div"), {
+  //     y: 40,
+  //     opacity: 0,
+  //     stagger: 0.15,
+  //     duration: 0.4,
+  //   });
+
+  //   // Animate social links
+  //   tl.fromTo(
+  //     ".social-link",
+  //     { y: 40, opacity: 0 }, // start state
+  //     { y: 0, opacity: 1, duration: 0.4, stagger: 0.2 }, // end state
+  //     "-=0.25"
+  //   );
+
+  //   // Animate border
+  //   tl.fromTo(
+  //     borRef.current,
+  //     { width: "0%" },
+  //     {
+  //       width: "100%",
+  //       duration: 0.7,
+  //       ease: "power3.out",
+  //     },
+  //     "-=0.5"
+  //   );
+  // }, []);
+
+ useGSAP(() => {
+  gsap.registerPlugin(ScrollTrigger);
+
   const tl = gsap.timeline({
-    defaults: { ease: "power2.out" }
+    defaults: { ease: "power2.out" },
   });
 
+  // Animate intro section content
   tl.from(secRef.current.querySelectorAll("div"), {
     y: 40,
     opacity: 0,
     stagger: 0.15,
     duration: 0.4,
-  }); 
+  });
 
-  // Animate social links
-tl.fromTo(".social-link", 
-  { y: 40, opacity: 0 },  // start state
-  { y: 0, opacity: 1, duration: 0.4, stagger: 0.2 } // end state
-,"-=0.25");
-
-  // Animate border
-  tl.fromTo(borRef.current,
+  // Animate border line under "Dhiraj"
+  tl.fromTo(
+    borRef.current,
     { width: "0%" },
     {
       width: "100%",
       duration: 0.7,
       ease: "power3.out",
-    }, "-=0.5" // overlaps halfway with social link animation
+    },
+    "-=0.5"
   );
+
 }, []);
-
-
 
   return (
     <section className='py-24 text-gray-300 relative overflow-hidden'>
-      <div className='text-center mt-10 px-4'>
+      <div className='text-center mt-10 px-4 '>
         <h2
-        ref={titleRef}
+          ref={titleRef}
           className=' relative  z-20 text-4xl sm:text-5xl md:text-6xl font-medium tracking-tight md:mb-36 '
           style={{
             textShadow:
@@ -61,8 +92,8 @@ tl.fromTo(".social-link",
         </h2>
 
         <section
-         ref={secRef}
-          className='py-20 text-gray-300 relative overflow-hidden'
+          ref={secRef}
+          className=' text-gray-300 relative overflow-hidden  '
         >
           <div
             className='flex flex-col lg:flex-row items-center justify-between max-w-6xl mx-auto p-6 gap-12 lg:gap-20'
@@ -83,7 +114,7 @@ tl.fromTo(".social-link",
                     height={300}
                     decoding='async'
                     className='h-full w-full object-cover'
-                    src='../../public/memoji-smile.webp'
+                    src='/memoji-smile.webp'
                     style={{ color: "transparent" }}
                   />
                 </div>
@@ -122,7 +153,7 @@ tl.fromTo(".social-link",
                     Dhiraj
                   </span>
                   <span
-                  ref={borRef}
+                    ref={borRef}
                     className='absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-violet-500 to-orange-500 rounded-full'
                     style={{ width: "0%" }}
                   ></span>
@@ -132,10 +163,11 @@ tl.fromTo(".social-link",
                 className='text-lg leading-7 mb-5 text-gray-200'
                 style={{ opacity: 1, transform: "none" }}
               >
-                I'm Dhiraj Prajapati, a Web developer and Computer Science
-                student with 3+ years of experience. I specialize in building
-                clean, responsive, and dynamic websites using HTML, CSS,
-                JavaScript, React, NextJs, PostgreSQL, Prisma and MongoDB.
+                Hi, I’m Dhiraj Prajapati — a Computer Science student and
+                aspiring Web Developer. I enjoy learning modern web technologies
+                like React, Next.js, and MongoDB, and I'm eager to apply my
+                skills to build clean, responsive, and impactful digital
+                experiences.
               </p>
               <p
                 className='text-lg leading-7 mb-6 text-gray-200'
@@ -154,7 +186,7 @@ tl.fromTo(".social-link",
                 <div className='flex flex-wrap gap-4 lg:justify-start justify-center'>
                   {/* Frontend */}
                   <div
-                    className='flex items-center gap-2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10'
+                    className='skill-badge flex items-center gap-2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10'
                     style={{
                       backgroundColor:
                         "oklab(0.999994 0.0000455678 0.0000200868 / 0.05)",
@@ -178,7 +210,7 @@ tl.fromTo(".social-link",
 
                   {/* Backend */}
                   <div
-                    className='flex items-center gap-2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10'
+                    className='skill-badge flex items-center gap-2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10'
                     style={{
                       backgroundColor:
                         "oklab(0.999994 0.0000455678 0.0000200868 / 0.05)",
@@ -202,7 +234,7 @@ tl.fromTo(".social-link",
 
                   {/* Database */}
                   <div
-                    className='flex items-center gap-2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10'
+                    className='skill-badge flex items-center gap-2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10'
                     style={{
                       backgroundColor:
                         "oklab(0.999994 0.0000455678 0.0000200868 / 0.05)",
@@ -225,13 +257,12 @@ tl.fromTo(".social-link",
                   </div>
                 </div>
                 <div className='opacity-100 transform-none mt-10'>
-                  <h4 className='text-xl font-semibold mb-4 text-white text-center lg:text-left'>
+                  <h4 className='text-xl font-semibold mb-4 text-white text-center lg:text-left '>
                     Connect With Me
                   </h4>
 
-                  <div className='flex items-center gap-5 mt-4 justify-center lg:justify-start flex-wrap'>
+                  <div className='flex items-center gap-5 mt-4 justify-center lg:justify-start flex-wrap  '>
                     <a
-                
                       href='https://github.com/DHIRAJPRAJAPATI78'
                       aria-label='GitHub'
                       target='_blank'
@@ -253,7 +284,6 @@ tl.fromTo(".social-link",
                     </a>
 
                     <a
-                    
                       href='https://www.linkedin.com/in/dhiraj-prajapati-859003256?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'
                       aria-label='LinkedIn'
                       target='_blank'
@@ -279,33 +309,10 @@ tl.fromTo(".social-link",
                     </a>
 
                     <a
-                   
-                      href='#'
-                      aria-label='Facebook'
+                      href='mailto:dhirajkumarprajapati1200@gmail.com'
                       target='_blank'
-                      rel='noopener noreferrer'
-                      className='social-link flex items-center justify-center w-12 h-12 rounded-full bg-white/5 hover:bg-blue-500/20 text-gray-300 hover:text-blue-400 transition-all duration-300 border border-white/10'
-                    >
-                      <svg
-                        stroke='currentColor'
-                        fill='currentColor'
-                        strokeWidth='0'
-                        viewBox='0 0 320 512'
-                        className='text-xl'
-                        height='1em'
-                        width='1em'
-                        xmlns='http://www.w3.org/2000/svg'
-                      >
-                        <path d='M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z' />
-                      </svg>
-                    </a>
-
-                    <a
-                  
-                      href='#'
-                      target='-blank'
                       aria-label='Gmail'
-                      className='social-link flex items-center justify-center w-12 h-12 rounded-full bg-white/5 hover:bg-red-500/20 text-gray-300 hover:text-red-400 transition-all duration-300 border border-white/10' 
+                      className='social-link flex items-center justify-center w-12 h-12 rounded-full bg-white/5 hover:bg-red-500/20 text-gray-300 hover:text-red-400 transition-all duration-300 border border-white/10'
                     >
                       <svg
                         stroke='currentColor'

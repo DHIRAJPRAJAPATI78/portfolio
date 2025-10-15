@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 const skills = [
   { name: "HTML", icon: "https://cdn.simpleicons.org/html5" },
-  { name: "CSS", icon: "https://cdn.simpleicons.org/css3" },
+  { name: "CSS", icon: "https://cdn.simpleicons.org/css" },
   { name: "JavaScript", icon: "https://cdn.simpleicons.org/javascript" },
   { name: "ReactJS", icon: "https://cdn.simpleicons.org/react" },
   { name: "NodeJS", icon: "https://cdn.simpleicons.org/nodedotjs" },
@@ -29,19 +29,17 @@ export default function SkillSection() {
 useGSAP(() => {
   // Animation for image
   gsap.from(".img img", {
+    y: -200,
     opacity: 0,
-    duration: 0.8,
-    delay: 0.2,
-    y: 100,
+    duration: 1.6,
+    ease: "bounce.out",
     scrollTrigger: {
       trigger: ".img img",
-      start: "top 70%",
-      end: "top 40%",
-      scrub: true,
-      scroller: "body",
+      start: "top 30%",
+      toggleActions: "play none none none",
+      once: true,
     },
   });
-
   // Animation for skills
   const items = gsap.utils.toArray(".skill > div"); // each skill item
  gsap.from(items, {
@@ -75,7 +73,7 @@ useGSAP(() => {
         height={300}
         decoding="async"
         className="z-10 w-full select-none"
-        src="../../public/gpt.webp"
+        src="/gpt.webp"
         style={{ color: "transparent" }}
       />
     </div>

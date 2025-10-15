@@ -1,31 +1,84 @@
 import { useGSAP } from "@gsap/react";
-import gsap from 'gsap';
+import gsap from "gsap";
 import { useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 const AboutSection = () => {
-  const sectionRef = useRef()
-  const spanRef = useRef()
-useGSAP(() => {
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.fromTo(spanRef.current, { width: "0%" }, {
-    width: "100%",
-    scrollTrigger: {
-      trigger: spanRef.current,
-      start: "top 90%",
-      end: "bottom 40%",
-      scrub: true,
-    }
-  });
-}, {scope:sectionRef});
+  const sectionRef = useRef();
+  const spanRef = useRef();
+  const aboutTextRef = useRef();
+  const socialLinksRef = useRef();
+  
+  useGSAP(
+    () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // About underline animation (already done)
+      gsap.fromTo(
+        spanRef.current,
+        { width: "0%" },
+        {
+          width: "100%",
+          scrollTrigger: {
+            trigger: spanRef.current,
+            start: "top 90%",
+            end: "bottom 40%",
+          },
+        }
+      );
+
+      // ABOUT ME background text animation
+      gsap.fromTo(
+        aboutTextRef.current,
+        { y: -200, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "bounce.out",
+          scrollTrigger: {
+            trigger: aboutTextRef.current,
+            start: "top 55%",
+            toggleActions: "play none none none",
+
+          },
+        }
+      );
+
+      // Social icons stagger + bounce animation
+      gsap.fromTo(
+        ".social-icon", 
+        {
+          y: -20,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.2,
+          stagger: 0.2, 
+          scrollTrigger: {
+            trigger: socialLinksRef.current,
+            start: "top 90%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    },
+    { scope: sectionRef }
+  );
+
+
+
+
   return (
     <section ref={sectionRef}>
       <div className='flex flex-col items-center justify-center py-16 px-4 mt-50'>
         <div className='relative flex flex-col items-center justify-center w-full max-w-4xl mx-auto'>
-          {/* Glowing Background Circle */}
-          <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-gradient-to-r from-purple-500/20 to-blue-500/20 blur-3xl' />
-
           {/* Large Text (Behind) */}
-          <span className='text-8xl md:text-[10rem] font-extrabold bg-gradient-to-r from-white/10 via-white/5 to-white/2 bg-clip-text text-transparent select-none tracking-tighter'>
+          <span
+            ref={aboutTextRef}
+            className='text-7xl sm:text-6xl md:text-8xl lg:text-[10rem] font-extrabold bg-gradient-to-r from-white/10 via-white/5 to-white/6 bg-clip-text text-transparent select-none tracking-tight sm:tracking-tighter text-center'
+          >
             ABOUT ME
           </span>
 
@@ -71,11 +124,11 @@ useGSAP(() => {
                   height={300}
                   decoding='async'
                   className='h-full w-full object-cover'
-                  src='../../public/memoji-smile.webp'
+                  src='/memoji-smile.webp'
                   style={{ color: "transparent" }}
                 />
               </div>
- 
+
               <div
                 className='absolute -top-6 -right-6 bg-gradient-to-br from-violet-600 to-violet-800 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg'
                 style={{
@@ -110,7 +163,7 @@ useGSAP(() => {
                   Dhiraj
                 </span>
                 <span
-                 ref={spanRef}
+                  ref={spanRef}
                   className='xyz absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-violet-500 to-orange-500 rounded-full'
                   style={{ width: "100%" }}
                 ></span>
@@ -120,8 +173,10 @@ useGSAP(() => {
               className='text-lg leading-7 mb-5 text-gray-200'
               style={{ opacity: 1, transform: "none" }}
             >
-             Hi, I’m Dhiraj Prajapati — a Computer Science student and aspiring Web Developer.
-I enjoy learning modern web technologies like React, Next.js, and MongoDB, and I'm eager to apply my skills to build clean, responsive, and impactful digital experiences.
+              Hi, I’m Dhiraj Prajapati — a Computer Science student and aspiring
+              Web Developer. I enjoy learning modern web technologies like
+              React, Next.js, and MongoDB, and I'm eager to apply my skills to
+              build clean, responsive, and impactful digital experiences.
             </p>
             <p
               className='text-lg leading-7 mb-6 text-gray-200'
@@ -215,13 +270,16 @@ I enjoy learning modern web technologies like React, Next.js, and MongoDB, and I
                   Connect With Me
                 </h4>
 
-                <div className='flex items-center gap-5 mt-4 justify-center lg:justify-start flex-wrap'>
+                <div
+                  ref={socialLinksRef}
+                  className='flex items-center gap-5 mt-4 justify-center lg:justify-start flex-wrap'
+                >
                   <a
                     href='https://github.com/DHIRAJPRAJAPATI78'
                     aria-label='GitHub'
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='flex items-center justify-center w-12 h-12 rounded-full bg-white/5 hover:bg-gray-700/30 text-gray-300 hover:text-gray-100 transition-all duration-300 border border-white/10'
+                    className='social-icon flex items-center justify-center w-12 h-12 rounded-full bg-white/5 hover:bg-gray-700/30 text-gray-300 hover:text-gray-100 transition-all duration-300 border border-white/10'
                   >
                     <svg
                       stroke='currentColor'
@@ -242,7 +300,7 @@ I enjoy learning modern web technologies like React, Next.js, and MongoDB, and I
                     aria-label='LinkedIn'
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='flex items-center justify-center w-12 h-12 rounded-full bg-white/5 hover:bg-blue-500/20 text-gray-300 hover:text-blue-400 transition-all duration-300 border border-white/10'
+                    className='social-icon flex items-center justify-center w-12 h-12 rounded-full bg-white/5 hover:bg-blue-500/20 text-gray-300 hover:text-blue-400 transition-all duration-300 border border-white/10'
                   >
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
@@ -263,31 +321,10 @@ I enjoy learning modern web technologies like React, Next.js, and MongoDB, and I
                   </a>
 
                   <a
-                    href='#'
-                    aria-label='Facebook'
+                    href='mailto:dhirajkumarprajapati1200@gmail.com'
                     target='_blank'
-                    rel='noopener noreferrer'
-                    className='flex items-center justify-center w-12 h-12 rounded-full bg-white/5 hover:bg-blue-500/20 text-gray-300 hover:text-blue-400 transition-all duration-300 border border-white/10'
-                  >
-                    <svg
-                      stroke='currentColor'
-                      fill='currentColor'
-                      strokeWidth='0'
-                      viewBox='0 0 320 512'
-                      className='text-xl'
-                      height='1em'
-                      width='1em'
-                      xmlns='http://www.w3.org/2000/svg'
-                    >
-                      <path d='M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z' />
-                    </svg>
-                  </a>
-
-                  <a
-                    href='#'
-                    target="-blank"
                     aria-label='Gmail'
-                    className='flex items-center justify-center w-12 h-12 rounded-full bg-white/5 hover:bg-red-500/20 text-gray-300 hover:text-red-400 transition-all duration-300 border border-white/10'
+                    className='social-icon flex items-center justify-center w-12 h-12 rounded-full bg-white/5 hover:bg-red-500/20 text-gray-300 hover:text-red-400 transition-all duration-300 border border-white/10'
                   >
                     <svg
                       stroke='currentColor'
@@ -319,7 +356,6 @@ I enjoy learning modern web technologies like React, Next.js, and MongoDB, and I
           </div>
         </div>
       </section>
-
     </section>
   );
 };

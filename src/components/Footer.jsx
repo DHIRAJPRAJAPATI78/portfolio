@@ -1,4 +1,3 @@
-import React from "react";
 
 const date = new Date();
 export default function Footer() {
@@ -81,8 +80,9 @@ export default function Footer() {
 
             {/* Email */}
             <a
-              href='#'
+              href='mailto:dhirajkumarprajapati1200@gmail.com'
               target='_blank'
+              aria-label='Gmail'
               rel='noopener noreferrer'
               className='group relative'
             >
@@ -106,35 +106,6 @@ export default function Footer() {
               </div>
               <span className='absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs font-medium text-white/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
                 Email
-              </span>
-            </a>
-
-            {/* Facebook */}
-            <a
-              href='#'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='group relative'
-            >
-              <span className='absolute -inset-2 -z-10 scale-0 rounded-full bg-white/5 transition-all duration-300 group-hover:scale-100'></span>
-              <div className='flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white shadow-lg transition-colors duration-300 hover:bg-blue-500/20 hover:text-blue-300'>
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  width='24'
-                  height='24'
-                  viewBox='0 0 24 24'
-                  fill='none'
-                  stroke='currentColor'
-                  strokeWidth='2'
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  className='lucide lucide-facebook h-5 w-5'
-                >
-                  <path d='M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z'></path>
-                </svg>
-              </div>
-              <span className='absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs font-medium text-white/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
-                Facebook
               </span>
             </a>
           </div>

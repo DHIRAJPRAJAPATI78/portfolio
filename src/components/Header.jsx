@@ -136,13 +136,13 @@ function Header() {
                     className='opacity-0 animate-[rise_0.4s_ease-out_forwards]'
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
-                    <a
-                      href={href}
+                    <Link
+                      to={href}
                       className='text-2xl font-semibold block px-4 py-2 text-center hover:text-white'
                       onClick={() => handleClick(index)}
                     >
                       {label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
