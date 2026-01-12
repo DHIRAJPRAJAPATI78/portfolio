@@ -333,7 +333,7 @@ const Abouttab = () => {
                     <a
                       target='_blank'
                       rel='noopener noreferrer'
-                      href='#'
+                     href='https://drive.google.com/uc?export=download&id=1qi_1u8dDLte7BVB51kZvPkqNUki3O7Ad'
                       className='inline-block px-8 py-3 bg-gradient-to-r from-violet-600 to-orange-500 text-white font-medium rounded-full shadow-lg hover:shadow-violet-500/20 transition-all duration-300'
                     >
                       Download Resume

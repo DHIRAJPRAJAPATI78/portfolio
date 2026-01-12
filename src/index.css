@@ -3,9 +3,6 @@
     font-family: font1;
     src: url(rajdhani-700.woff2) format("woff2");
 }
-html{
-  scroll-behavior: smooth;
-}
 *{
     font-family: font1;
 }

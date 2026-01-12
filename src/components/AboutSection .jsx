@@ -7,7 +7,7 @@ const AboutSection = () => {
   const spanRef = useRef();
   const aboutTextRef = useRef();
   const socialLinksRef = useRef();
-  
+
   useGSAP(
     () => {
       gsap.registerPlugin(ScrollTrigger);
@@ -39,14 +39,13 @@ const AboutSection = () => {
             trigger: aboutTextRef.current,
             start: "top 55%",
             toggleActions: "play none none none",
-
           },
         }
       );
 
       // Social icons stagger + bounce animation
       gsap.fromTo(
-        ".social-icon", 
+        ".social-icon",
         {
           y: -20,
           opacity: 0,
@@ -55,7 +54,7 @@ const AboutSection = () => {
           y: 0,
           opacity: 1,
           duration: 0.2,
-          stagger: 0.2, 
+          stagger: 0.2,
           scrollTrigger: {
             trigger: socialLinksRef.current,
             start: "top 90%",
@@ -66,9 +65,6 @@ const AboutSection = () => {
     },
     { scope: sectionRef }
   );
-
-
-
 
   return (
     <section ref={sectionRef}>
@@ -345,7 +341,7 @@ const AboutSection = () => {
                   <a
                     target='_blank'
                     rel='noopener noreferrer'
-                    href='#'
+                    href='https://drive.google.com/uc?export=download&id=1qi_1u8dDLte7BVB51kZvPkqNUki3O7Ad'
                     className='inline-block px-8 py-3 bg-gradient-to-r from-violet-600 to-orange-500 text-white font-medium rounded-full shadow-lg hover:shadow-violet-500/20 transition-all duration-300'
                   >
                     Download Resume
