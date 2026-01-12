@@ -40,34 +40,33 @@ const Abouttab = () => {
   //   );
   // }, []);
 
- useGSAP(() => {
-  gsap.registerPlugin(ScrollTrigger);
+  useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger);
 
-  const tl = gsap.timeline({
-    defaults: { ease: "power2.out" },
-  });
+    const tl = gsap.timeline({
+      defaults: { ease: "power2.out" },
+    });
 
-  // Animate intro section content
-  tl.from(secRef.current.querySelectorAll("div"), {
-    y: 40,
-    opacity: 0,
-    stagger: 0.15,
-    duration: 0.4,
-  });
+    // Animate intro section content
+    tl.from(secRef.current.querySelectorAll("div"), {
+      y: 40,
+      opacity: 0,
+      stagger: 0.15,
+      duration: 0.4,
+    });
 
-  // Animate border line under "Dhiraj"
-  tl.fromTo(
-    borRef.current,
-    { width: "0%" },
-    {
-      width: "100%",
-      duration: 0.7,
-      ease: "power3.out",
-    },
-    "-=0.5"
-  );
-
-}, []);
+    // Animate border line under "Dhiraj"
+    tl.fromTo(
+      borRef.current,
+      { width: "0%" },
+      {
+        width: "100%",
+        duration: 0.7,
+        ease: "power3.out",
+      },
+      "-=0.5"
+    );
+  }, []);
 
   return (
     <section className='py-24 text-gray-300 relative overflow-hidden'>
@@ -333,7 +332,7 @@ const Abouttab = () => {
                     <a
                       target='_blank'
                       rel='noopener noreferrer'
-                     href='https://drive.google.com/uc?export=download&id=1qi_1u8dDLte7BVB51kZvPkqNUki3O7Ad'
+                      href='https://drive.google.com/uc?export=download&id=1qi_1u8dDLte7BVB51kZvPkqNUki3O7Ad'
                       className='inline-block px-8 py-3 bg-gradient-to-r from-violet-600 to-orange-500 text-white font-medium rounded-full shadow-lg hover:shadow-violet-500/20 transition-all duration-300'
                     >
                       Download Resume
